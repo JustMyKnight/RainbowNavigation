@@ -6,6 +6,8 @@
 //
 //
 
+import UIKit
+
 class RainbowDragPop: UIPercentDrivenInteractiveTransition {
     
     var interacting = false
@@ -27,7 +29,7 @@ class RainbowDragPop: UIPercentDrivenInteractiveTransition {
     }
     
     
-    func handlePan(_ panGesture:UIScreenEdgePanGestureRecognizer) {
+    @objc func handlePan(_ panGesture:UIScreenEdgePanGestureRecognizer) {
         let offset = panGesture.translation(in: panGesture.view)
         let velocity = panGesture.velocity(in: panGesture.view)
         

@@ -56,6 +56,13 @@ public class Rainbow: NSObject {
             statusBarView?.backgroundColor = newValue
         }
     }
+    
+    public var statusBarHeight: CGFloat {
+        get {
+            return statusBarView?.frame.height ?? 0
+        }
+    }
+    
     public func clear() {
         navigationBar.setBackgroundImage(nil, for: .default)
         navigationBar.shadowImage = nil
