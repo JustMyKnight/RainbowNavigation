@@ -20,6 +20,8 @@ class TransparentTableViewController: UITableViewController, RainbowColorSource 
         imageView.contentMode = .scaleAspectFill
         imageView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.width * 0.75)
         tableView.tableHeaderView = imageView
+        tableView.contentOffset.y = ((navigationController?.navigationBar.frame.height ?? 0) + (navigationController?.navigationBar.rb.statusBarHeight ?? 0))
+        tableView.contentInset.top = -((navigationController?.navigationBar.frame.height ?? 0) + (navigationController?.navigationBar.rb.statusBarHeight ?? 0))
     }
 
     override func didReceiveMemoryWarning() {

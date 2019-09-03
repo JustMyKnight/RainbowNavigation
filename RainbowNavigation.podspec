@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = "RainbowNavigation"
-  spec.version      = "2.0.2"
+  spec.version      = "2.0.3"
   spec.summary      = "Custom navigation and transition"
   spec.description  = "Easy to use RainbowNavigation to create a view navigation with alpha color"
 
