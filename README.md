@@ -6,7 +6,7 @@
 
 ## Feature
 
-`RainbowNavigation` is written in Swift 2.0. It helps you change the backgroundColor of `UINavigationBar` in animations and transitions.
+`RainbowNavigation` is written in Swift 5.0. It helps you change the backgroundColor of `UINavigationBar` in animations and transitions.
 
 ![image1](https://github.com/DanisFabric/RainbowNavigation/blob/master/images/demo1.gif)
 ![image2](https://github.com/DanisFabric/RainbowNavigation/blob/master/images/demo2.gif)
@@ -15,7 +15,7 @@
 ## Requirements
 
 * iOS 8.0 +
-* Swift 3.0 +
+* Swift 5.0 +
 
 ## Install
 
