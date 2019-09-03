@@ -7,7 +7,7 @@ Pod::Spec.new do |spec|
   spec.homepage      = "https://github.com/JustMyKnight/RainbowNavigation"
   spec.license       = "MIT"
   spec.author        = { "Pavel Fokin" => "p_fokin@hotmail.com" }
-  spec.source        = { :git => "https://github.com/JustMyKnight/RainbowNavigation.git", :tag => spec.version.to_spec }
+  spec.source        = { :git => "https://github.com/JustMyKnight/RainbowNavigation.git", :tag => spec.version.to_s }
   spec.source_files  = "RainbowNavigation"
   spec.swift_version = "5"
 end
