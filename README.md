@@ -17,16 +17,6 @@
 * iOS 8.0 +
 * Swift 5.0 +
 
-## Install
-
-### Carthage
-
-Add following code to your `Cartfile`, and run `carthage update`:
-
-```ruby
-github "DanisFabric/RainbowNavigation"
-```
-
 ## Usage
 
 ### Change backgroundColor of `UINavigationBar`
