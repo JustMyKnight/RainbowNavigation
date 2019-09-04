@@ -51,10 +51,11 @@ public class Rainbow: NSObject {
                 statusBarView = UIView(frame: CGRect(x: 0, y: -UIApplication.shared.statusBarFrame.height, width: navigationBar.bounds.width, height: UIApplication.shared.statusBarFrame.height))
                 statusBarView?.isUserInteractionEnabled = false
                 statusBarView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-                if let navigationView = navigationView {
-                    navigationBar.insertSubview(statusBarView!, aboveSubview: navigationView)
+                if #available(iOS 11, *) {
+                    guard let subview = navigationBar.subviews.first else { return }
+                    subview.insertSubview(navigationView!, at: 0)
                 } else {
-                    navigationBar.insertSubview(statusBarView!, at: 0)
+                    navigationBar.insertSubview(navigationView!, at: 0)
                 }
             }
             statusBarView?.backgroundColor = newValue
