@@ -34,7 +34,8 @@ public class Rainbow: NSObject {
                 navigationView?.isUserInteractionEnabled = false
                 navigationView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
                 if #available(iOS 11, *) {
-                    navigationBar.subviews[0].insertSubview(navigationView!, at: 0)
+                    guard let subview = navigationBar.subviews.first else { return }
+                    subview.insertSubview(navigationView!, at: 0)
                 } else {
                     navigationBar.insertSubview(navigationView!, at: 0)
                 }
