@@ -30,7 +30,12 @@ public class Rainbow: NSObject {
             if navigationView == nil {
                 navigationBar.setBackgroundImage(UIImage(), for: .default)
                 navigationBar.shadowImage = UIImage()
-                navigationView = UIView(frame: CGRect(x: 0, y: 0, width: navigationBar.bounds.width, height: navigationBar.bounds.height + UIApplication.shared.statusBarFrame.height))
+                if #available(iOS 11, *) {
+                    navigationView = UIView(frame: CGRect(x: 0, y: 0, width: navigationBar.bounds.width, height: navigationBar.bounds.height))
+                }
+                else {
+                    navigationView = UIView(frame: CGRect(x: 0, y: 0, width: navigationBar.bounds.width, height: navigationBar.bounds.height + UIApplication.shared.statusBarFrame.height))
+                }
                 navigationView?.isUserInteractionEnabled = false
                 navigationView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
                 guard let subview = navigationBar.subviews.first else { return }
