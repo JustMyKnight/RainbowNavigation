@@ -31,9 +31,11 @@ public class Rainbow: NSObject {
                 navigationBar.setBackgroundImage(UIImage(), for: .default)
                 navigationBar.shadowImage = UIImage()
                 if #available(iOS 11, *) {
+                    print("this is ios 11")
                     navigationView = UIView(frame: CGRect(x: 0, y: 0, width: navigationBar.bounds.width, height: navigationBar.bounds.height))
                 }
                 else {
+                    print("this is ios 10")
                     navigationView = UIView(frame: CGRect(x: 0, y: 0, width: navigationBar.bounds.width, height: navigationBar.bounds.height + UIApplication.shared.statusBarFrame.height))
                 }
                 navigationView?.isUserInteractionEnabled = false
@@ -66,7 +68,7 @@ public class Rainbow: NSObject {
     
     public var statusBarHeight: CGFloat {
         get {
-            return statusBarView?.frame.height ?? 0
+            return UIApplication.shared.statusBarFrame.height
         }
     }
     
