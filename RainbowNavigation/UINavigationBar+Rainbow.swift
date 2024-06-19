@@ -30,22 +30,49 @@ public class Rainbow: NSObject {
             if navigationView == nil {
                 navigationBar.setBackgroundImage(UIImage(), for: .default)
                 navigationBar.shadowImage = UIImage()
-                if #available(iOS 11, *) {
-                    print("this is ios 11")
-                    navigationView = UIView(frame: CGRect(x: 0, y: 0, width: navigationBar.bounds.width, height: navigationBar.bounds.height))
+                var height = navigationBar.bounds.height
+                if let safeAreaTop = UIApplication.shared.keyWindow?.safeAreaInsets.top {
+                    height = safeAreaTop + height
                 }
-                else {
-                    print("this is ios 10")
-                    navigationView = UIView(frame: CGRect(x: 0, y: 0, width: navigationBar.bounds.width, height: navigationBar.bounds.height + UIApplication.shared.statusBarFrame.height))
-                }
+                let statusBarHeight = UIApplication.shared.statusBarFrame.size.height
+                navigationView = UIView(frame: CGRect(x: 0, y: -statusBarHeight, width: navigationBar.bounds.width, height: height))
                 navigationView?.isUserInteractionEnabled = false
-                navigationView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
                 guard let subview = navigationBar.subviews.first else { return }
+                navigationView?.translatesAutoresizingMaskIntoConstraints = false
                 subview.insertSubview(navigationView!, at: 0)
+                NSLayoutConstraint(item: navigationView,
+                                   attribute: .top,
+                                   relatedBy: .equal,
+                                   toItem: subview,
+                                   attribute: .top,
+                                   multiplier: 1.0,
+                                   constant: 0).isActive = true
+                NSLayoutConstraint(item: navigationView,
+                                   attribute: .bottom,
+                                   relatedBy: .equal,
+                                   toItem: subview,
+                                   attribute: .bottom,
+                                   multiplier: 1.0,
+                                   constant: 0).isActive = true
+                NSLayoutConstraint(item: navigationView,
+                                   attribute: .leading,
+                                   relatedBy: .equal,
+                                   toItem: subview,
+                                   attribute: .leading,
+                                   multiplier: 1.0,
+                                   constant: 0).isActive = true
+                NSLayoutConstraint(item: navigationView,
+                                   attribute: .trailing,
+                                   relatedBy: .equal,
+                                   toItem: subview,
+                                   attribute: .trailing,
+                                   multiplier: 1.0,
+                                   constant: 0).isActive = true
             }
             navigationView!.backgroundColor = newValue
         }
     }
+    
     public var statusBarColor: UIColor? {
         get {
             return statusBarView?.backgroundColor
@@ -55,12 +82,8 @@ public class Rainbow: NSObject {
                 statusBarView = UIView(frame: CGRect(x: 0, y: -UIApplication.shared.statusBarFrame.height, width: navigationBar.bounds.width, height: UIApplication.shared.statusBarFrame.height))
                 statusBarView?.isUserInteractionEnabled = false
                 statusBarView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-                if #available(iOS 11, *) {
-                    guard let subview = navigationBar.subviews.first else { return }
-                    subview.insertSubview(navigationView!, at: 0)
-                } else {
-                    navigationBar.insertSubview(navigationView!, at: 0)
-                }
+                guard let subview = navigationBar.subviews.first else { return }
+                subview.insertSubview(navigationView!, at: 0)
             }
             statusBarView?.backgroundColor = newValue
         }
